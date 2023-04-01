@@ -1,0 +1,120 @@
+<div class="container">
+
+
+	<div class="row" ng-keydown="onKeyDown($event)" ng-keyup="onKeyUp($event)" ng-keypress="onKeyPress($event)">
+
+		<div class="col-lg-4 topicMgmtShowHideAnimation" ng-hide="!showList">
+
+			<!-- ############################## -->
+			<h4>Task Search:</h4>
+
+			<div class="input-group">
+				<input type="text" data-ng-model="searchText" class="form-control">
+			</div>
+			<!-- /input-group -->
+			You are typing "{{searchText}}" <br /> Number of filtered items:
+			{{filteredItems.length}} <br />
+			<p ng-hide="filteredItems.length">There is no result</p>
+			<!-- ############################## -->
+
+			<strong>KEY DOWN RESULT:</strong> {{onKeyDownResult}}<br /> <strong>KEY
+				UP RESULT:</strong> {{onKeyUpResult}}<br /> <strong>KEY PRESS
+				RESULT:</strong> {{onKeyPressResult}}
+
+			<!--####################-->
+			<table class="friends">
+				<tr>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('title')">Title</button>
+						<span class="sortorder" ng-show="propertyName === 'title'" ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('dateLastModified')">Last Modified</button> <span class="sortorder"
+						 ng-show="propertyName === 'dateLastModified'" ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('dateCreated')">Creation Date</button> <span class="sortorder"
+						 ng-show="propertyName === 'dateCreated'" ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('rating')">Rating</button>
+						<span class="sortorder" ng-show="propertyName === 'rating'" ng-class="{reverse: reverse}"></span>
+					</th>
+					
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('dateLastRead')">Last Read</button>
+						<span class="sortorder" ng-show="propertyName === 'dateLastRead'" ng-class="{reverse: reverse}"></span>
+					</th>
+				</tr>
+
+			</table>
+			<!--####################-->
+
+			<div data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText |orderBy:propertyName:reverse))">
+				<!-- <div class="row resultsDisplay"> -->
+				<div class="row">
+					<div class="row">
+						<span ng-class="{selectedTopicRow: topic.id === idSelectedVote}">
+							<a data-ng-click="showAt($index)"> {{topic.title}} </a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="topicDetailsDiv" class="col-lg-8">
+
+			<a class="btn btn-xs btn-primary" ng-click="previous()"><i class="fa fa-plus">previous</i></a>
+			
+			<a class="btn btn-xs btn-primary"
+			 ng-click="next()"><i class="fa fa-plus">next</i></a>
+
+			 <a class="btn btn-xs btn-primary" ng-if="!timerStarted" ng-click="slideShowStart()"><i class="fa fa-plus">Show slideshow</i></a>
+
+			 <a class="btn btn-xs btn-primary" ng-if="timerStarted" ng-click="slideShowCancel()"><i class="fa fa-plus">Cancel slideshow</i></a>
+
+			<a class="btn btn-xs btn-primary" ng-click="showTopicsList()"><i class="fa fa-plus">Show List</i></a>
+			<h1 class="page-header">
+				Topic <small>:
+					<!-- [{{topic.id}}] --> [{{counterrr}}]
+					{{topic.title}}
+				</small>
+			</h1>
+
+			<h4>
+				Rating : {{topic.rating}}
+				<div star-rating rating-value="topic.rating" edit-star-rating="false" max="maxRatingValue"></div>
+			</h4>
+
+
+
+			<p>
+				<i class="fa fa-clock-o"></i> Last Modified on <b><span ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+			</p>
+			<p>
+				<i class="fa fa-clock-o"></i> Created on <b><span ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+			</p>
+
+			<p ng-if="topic!==undefined">
+				<a class="btn btn-xs btn-primary" href="#/topics/{{topic.id}}">Modify
+					<i class="fa fa-angle-right"></i>
+				</a>
+				
+				<a class="btn btn-xs btn-primary" ng-click="saveTopicReads()">Mark as Read today
+					<i class="fa fa-angle-right"></i>
+				</a>
+				
+				<i class="fa fa-clock-o"></i> Last Read on <b><span ng-bind="topicsReads.topic.dateLastRead | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b> 
+			Total Reads :- {{topicsReads.count}}
+			</p>
+
+			<hr>
+			<div class="resultsDisplay" ng-bind-html="topic.description"></div>
+			<hr>
+		</div>
+
+
+	</div>
+
+
+</div>

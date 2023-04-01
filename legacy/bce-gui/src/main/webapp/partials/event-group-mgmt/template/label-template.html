@@ -1,0 +1,93 @@
+<!-- <pre>{{labelList | json }}</pre> -->
+<div class="row">
+    <div id="idDivELLabelsButtonContols" class="col-lg-12">
+
+        <a class="btn btn-xs btn-primary">
+            Previous<i class="fa fa-angle-right"></i>
+        </a>
+
+        <a class="btn btn-xs btn-primary">
+            Next<i class="fa fa-angle-right"></i>
+        </a>
+
+        <a class="btn btn-xs btn-primary">
+            Reload<i class="fa fa-angle-right"></i>
+        </a>
+
+        <!-- <a class="btn btn-xs btn-primary">
+            Add<i class="fa fa-angle-right"></i>
+        </a> -->
+
+        <a ng-show="selectedView===views.ADD" class="btn btn-xs btn-primary" ng-click="selectedView=views.ADD_START">
+            Add<i class="fa fa-angle-right"></i>
+        </a>
+        <a ng-show="selectedView===views.ADD_START" class="btn btn-xs btn-danger" ng-click="selectedView=views.ADD">
+            Cancel Add<i class="fa fa-angle-right"></i>
+        </a>
+
+        <br>
+
+        Sort by:
+        <select ng-model="orderProp">
+            <option value="title">Title</option>
+            <option value="detail">Detail</option>
+            <option value="event_date">Event Date</option>
+            <option value="created_on">Created On</option>
+            <option value="updated_on">Updated On</option>
+        </select>
+
+        <a ng-init="descendingOrder='T';"
+            ng-click="console.log('descendingOrder : '+descendingOrder);descendingOrder==='T'?'F':'T';"
+            class="btn btn-xs btn-primary">
+            {{descendingOrder=='T'?'DESC':'ASC'}}<i class="fa fa-angle-right"></i>
+        </a>
+        <!-- <span ng-init="descendingOrder='T'" ng-click="(descendingOrder=='T'?'F':'T')">
+            {{descendingOrder=='T'?'DESC':'ASC'}}
+        </span> -->
+
+        {{orderProp}}
+
+    </div>
+</div>
+<!-- /. row -->
+<div class="row">
+    <div id="idDivELLabelsList" class="col-lg-4">
+        <h2><b>Labels</b></h2>
+        <!-- <a style="margin-bottom: 10px;" class="btn btn-primary btn-block">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add</a> -->
+
+        <input type="text" name="Search" ng-model="searchTxt">
+
+        <ul class="list-group list-group-scrolling">
+            <li ng-repeat="elLabelListItem in (filteredItems=(labelList| filter:searchTxt | orderBy: orderProp))"
+                class="list-group-item text-center clearfix">
+                <div class="row">
+                    <div id="{{'word-'+$index}}"
+                        ng-class="{selectedWordRow: pagedDataItem.id === idSelectedVote,otherUnselectedWordRow: (pagedDataItem.id !== idSelectedVote)}">
+                        <a data-ng-click="showAt($index)">
+                            <span ng-bind-html="pagedDataItem.word" />
+                        </a>
+                    </div>
+                </div>
+                <!-- <span style="font-weight: bold">{{elLabelListItem.label | uppercase}}</span>
+                <a href="#/addItem/edit/{{elLabelListItem.id}}" class="btn btn-sm btn-default pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a> -->
+            </li>
+        </ul>
+    </div>
+    <!-- /.idDivEventList -->
+    <div id="idDivELLabelsDetails" class="col-lg-8">
+        <div ng-show="selectedView===views.EDIT_START"
+            ng-include="'partials/event-group-mgmt/template/label-edit-template.html'">
+        </div>
+        <div ng-show="selectedView===views.ADD_START"
+            ng-include="'partials/event-group-mgmt/template/label-add-template.html'">
+        </div>
+        <div ng-show="selectedView===views.VIEW"
+            ng-include="'partials/event-group-mgmt/template/label-view-template.html'">
+        </div>
+    </div>
+</div>
+<!-- /. row -->

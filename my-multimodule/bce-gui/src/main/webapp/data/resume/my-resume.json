@@ -1,0 +1,65 @@
+{
+    "name": "Premendra Kumar",
+    "experience": [{
+            "companyName": "",
+            "tenure": "",
+            "entryDesignation": "",
+            "exitDesignation": ""
+        },
+        {
+            "companyName": "",
+            "tenure": "",
+            "entryDesignation": "",
+            "exitDesignation": ""
+        },
+        {
+            "companyName": "",
+            "tenure": "",
+            "entryDesignation": "",
+            "exitDesignation": ""
+        },
+        {
+            "companyName": "",
+            "tenure": "",
+            "entryDesignation": "",
+            "exitDesignation": ""
+        },
+        {
+            "companyName": "",
+            "tenure": "",
+            "entryDesignation": "",
+            "exitDesignation": ""
+        },
+        {
+            "companyName": "CONCENTRIX INDIA",
+            "tenure": "",
+            "entryDesignation": "",
+            "exitDesignation": ""
+        },
+        {
+            "companyName": "WDC , CLIENT - CONCENTRIX INDIA ",
+            "tenure": "Jan 2014 to Dec 2014",
+            "entryDesignation": "SOFTWARE DEVELOPER (L2/L3)",
+            "exitDesignation": "SOFTWARE DEVELOPER (L2/L3)"
+        },
+        {
+            "companyName": "APPLICATION DEVELOPER, NOVELVOX SOFTWARE INDIA PVT LTD {PREVIOUSLY KNOWN AS INTEGRATION SERVICES & TECHNOLOGIES INDIA PVT LTD }",
+            "tenure": "May 2012 to Dec 2013",
+            "entryDesignation": "APPLICATION DEVELOPER,",
+            "exitDesignation": "APPLICATION DEVELOPER,"
+        },
+        {
+            "companyName": "HCL INFOSYSTEMS LTD",
+            "tenure": "March 2011 to May 2012",
+            "entryDesignation": "SOFTWARE DEVELOPER",
+            "exitDesignation": "SOFTWARE DEVELOPER"
+        },
+        {
+            "companyName": "GREENAPPLE WEBWARE",
+            "tenure": "September 2009 to February 2011",
+            "entryDesignation": "SOFTWARE DEVELOPER",
+            "exitDesignation": "SOFTWARE DEVELOPER",
+            "exitReason": "Got better opportunity from HCL Infosystems"
+        }
+    ]
+}

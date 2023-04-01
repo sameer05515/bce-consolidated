@@ -1,0 +1,54 @@
+<div class="container">
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				View <small>: Update</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/View</a></li>
+				<li class="active">Update : {{viewObj.title}}</li>
+			</ol>
+		</div>
+	</div>
+	<!-- /.row -->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Update New View</h3>
+		</div>
+
+		<div class="col-lg-12">
+			<b>Title :</b>
+		</div>
+
+		<div class="col-lg-12">
+			<input type="text" ng-model="viewObj.title" />
+		</div>
+
+		<div class="col-lg-12">
+			<b>Description :</b>
+		</div>
+
+		<div class="col-lg-12">
+			<trix-editor angular-trix ng-model="viewObj.description"></trix-editor>
+		</div>
+
+		<div class="col-lg-12">
+			<a class="btn btn-xs btn-primary" ng-click="updateViewObj()">Update
+				<i class="fa fa-angle-right"></i>
+			</a> <a class="btn btn-xs btn-primary" href="#/views-list/{{viewObj.id}}">Cancel
+				<i class="fa fa-angle-right"></i>
+			</a> <a class="btn btn-xs btn-primary" href="#/views-list">Back to
+				list<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+	</div>
+	<!-- /.row -->
+
+	<div confirm-on-exit="isDirty()"
+		confirm-message-window="All your changes will be lost."
+		confirm-message-route="All your changes will be lost. Are you sure you want to do this?">
+	</div>

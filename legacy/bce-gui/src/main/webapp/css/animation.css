@@ -1,0 +1,55 @@
+.example-animate-container {
+  background:white;
+  border:1px solid black;
+  list-style:none;
+  margin:0;
+  padding:0 10px;
+}
+
+.animate-repeat {
+  line-height:30px;
+  list-style:none;
+  box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:30px;
+}
+
+.link-block { 
+	background-color: #ccffcc; 
+	border-style: dotted;
+    border-color: #ff0000 /*#0000ff*/;
+	padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+/**Topic management show hide a div animation*/
+.topicMgmtShowHideAnimation.ng-hide-add,
+.topicMgmtShowHideAnimation.ng-hide-remove {
+  -webkit-transition: 1s ease-in-out opacity;
+  transition: 1s ease-in-out opacity;
+  opacity: 1;
+}
+
+.topicMgmtShowHideAnimation.ng-hide {
+  opacity: 0;
+}

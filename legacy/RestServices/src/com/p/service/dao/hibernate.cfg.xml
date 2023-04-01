@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.characterEncoding">UTF-8</property>
+
+		<!-- <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/topic-mgmt</property> 
+			<property name="connection.url">jdbc:postgresql://localhost:5432/topicmgmt_test3</property> -->
+
+
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- <property name="connection.url">jdbc:mysql://localhost:3306/topic_mgmt</property> -->
+		<property name="connection.url">jdbc:mysql://host.docker.internal:3306/topic_mgmt</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		
+		
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.SQLiteDialect</property>		
+		<property name="connection.driver_class">org.sqlite.JDBC</property>
+		<property name="connection.url">jdbc:sqlite:D:/CUSTOM-INSTALLATIONS/apache-tomcat-8.5.47/webapps/RestServices/topic-mgmt.db</property>
+		<property name="connection.username"></property>
+		<property name="connection.password"></property> -->
+		
+		
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property> 
+		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>   
+        <property name="hibernate.connection.username">sa</property>   
+        <property name="hibernate.connection.password"></property>   
+        <property name="hibernate.connection.url">jdbc:hsqldb:mem:topic-mgmt</property>
+		
+		<property name="hibernate.hbm2ddl.auto">create</property> -->
+
+
+		<!-- <property name="connection.driver_class">org.postgresql.Driver</property> 
+			<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/topic-mgmt</property> 
+			<property name="connection.username">postgres</property> <property name="connection.password">didi12345</property> 
+			<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> -->
+
+
+
+
+
+		<!-- -->
+
+
+		<property name="format_sql">true</property>
+		<property name="connection.autoReconnect">true</property>
+		<property name="connection.autoReconnectForPools">true</property>
+		<property name="hibernate.search.autoregister_listeners">false</property>
+		<!-- <property name="hbm2ddl.auto">create</property> -->
+
+
+		<property name="show_sql">true</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<!-- It is mapped to org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory -->
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+
+		<!-- connection pool -->
+		<property name="connection.pool_size">0</property>
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+
+
+		<mapping class="com.p.service.pojo.Topic" />
+		<mapping class="com.p.service.pojo.Group" />
+		<mapping class="com.p.service.pojo.View" />
+		<mapping class="com.p.service.pojo.TopicGroupRelation" />
+		<mapping class="com.p.service.pojo.ViewTopicRelation" />
+		<mapping class="com.p.service.pojo.GroupViewRelation" />
+
+	</session-factory>
+</hibernate-configuration>
