@@ -1,0 +1,187 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-lg-12">
+			<h1 class="page-header">
+				All Questions <small>: A Brief overview</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#/categories">HOME/CATEGORIES > </a></li>
+				<li class="active">All Questions</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="well col-lg-12">
+			<h4>Category Search:</h4>
+
+			<div class="input-group">
+				<input type="text" data-ng-model="searchText" class="form-control">
+			</div>
+			<!-- /input-group -->
+			You are typing "{{searchText}}" <br /> Number of filtered items:
+			{{filteredItems.length}} <br />
+			<p ng-hide="filteredItems.length">There is no result</p>
+
+			<a class="btn btn-xs btn-primary" ng-click="showCreateSection()" ng-if="!showCreateNewSection">Create New
+				Topic<i class="fa fa-angle-right"></i>
+			</a>
+			
+			<div ng-show="showCreateNewSection">
+				<trix-editor angular-trix ng-model="topicObj.catgoryName" ng-show="showCreateNewSection"></trix-editor>
+				<a class="btn btn-xs btn-primary"
+						ng-click="saveCategory()"
+						ng-if="showCreateNewSection">Save</a> 
+						
+						<a class="btn btn-xs btn-primary"
+						ng-click="hideCreateSection()"
+						ng-if="showCreateNewSection">Cancel</a>
+			</div>
+			
+		</div>
+		
+		<!-- /well -->
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+
+			<!--####################-->
+			<table class="friends">
+				<tr>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('catgoryName')">Title</button>
+						<span class="sortorder" ng-show="propertyName === 'catgoryName'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary"
+							ng-click="sortBy('dateLastModified')">Last Modified</button> <span
+						class="sortorder" ng-show="propertyName === 'dateLastModified'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary"
+							ng-click="sortBy('dateCreated')">Creation Date</button> <span
+						class="sortorder" ng-show="propertyName === 'dateCreated'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<b><input type="checkbox" ng-model="showPrivateTopics"/>Show Private Topics</b>
+					</th>
+					
+				</tr>
+
+			</table>
+			<!--####################-->
+
+			<!-- <div data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText |orderBy:'title'))" > -->
+			<div
+				data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText |filter:filterPrivateTopics |orderBy:propertyName:reverse))">
+				<div class="row resultsDisplay">
+					<div class="col-sm-12 col-md-12">
+						<div class="row">
+							<div class="col-md-1">
+								<p>
+									<i class="fa fa-file-text fa-4x"></i>
+								</p>
+							</div>
+
+							<div class="col-md-11">
+								<h2>
+									Category : <span ng-bind-html="topic.catgoryName"></span>
+								</h2>
+								
+								<a class="btn btn-xs btn-primary"
+									href="#/topics-list/{{topic.catID}}"
+									ng-if="true">Show Details</a>
+								<a class="btn btn-xs btn-primary"
+									ng-click="alert('not implemented yet')"
+									ng-if="true">Edit</a>
+								<a class="btn btn-xs btn-primary"
+									ng-click="alert('not implemented yet')"
+									ng-if="true">Delete</a>
+								
+								<div class="row">
+								
+									<div class="col-md-12 questionsDisplay" data-ng-repeat="ques in topic.questions">
+										<h3>
+											que : <span ng-bind-html="ques.question"></span>
+										</h3>										
+										
+										<a class="btn btn-xs btn-primary"
+											ng-click="alert('not implemented yet')"
+											ng-if="true">Show Details</a>
+										<a class="btn btn-xs btn-primary"
+											ng-click="alert('not implemented yet')"
+											ng-if="true">Edit</a>
+										<a class="btn btn-xs btn-primary"
+											ng-click="alert('not implemented yet')"
+											ng-if="true">Delete</a>
+											
+										<div class="row">
+											<div class="col-md-4 answersDisplay" data-ng-repeat="answ in ques.answers">
+												<h4>
+													ans : <span ng-bind-html="answ.answer"></span>
+												</h4>
+																							
+												<a class="btn btn-xs btn-primary"
+													ng-click="alert('not implemented yet')"
+													ng-if="true">Show Details</a>
+												<a class="btn btn-xs btn-primary"
+													ng-click="alert('not implemented yet')"
+													ng-if="true">Edit</a>
+												<a class="btn btn-xs btn-primary"
+													ng-click="alert('not implemented yet')"
+													ng-if="true">Delete</a>										
+											</div>
+										</div>										
+										
+									</div>
+								
+								</div>
+								
+								
+
+								<p>
+									Related Groups <a href="">grp 1</a> , <a href="">grp 2</a>
+								</p>
+
+								<p>
+									Related Views <a href="">view 1</a> , <a href="">view 2</a>
+								</p>
+
+								<p>
+									Related Topics <a href="">view 1</a> , <a href="">view 2</a>
+								</p>
+
+
+								<p>
+									<i class="fa fa-clock-o"></i> Last Modified on <b><span
+										ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+								</p>
+
+								<p>
+									<i class="fa fa-clock-o"></i> Created on <b><span
+										ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+								</p>
+
+								<a class="btn btn-xs btn-primary"
+									href="#/topics-list/{{topic.catID}}">Read More <i
+									class="fa fa-angle-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--row resultsDisplay-->
+			</div>
+			<!--End of data-ng-repeat-->
+
+			<hr>
+		</div>
+		<!--End Column col-sm-12 col-md-12-->
+	</div>
+	<!--End Row-->
+</div>

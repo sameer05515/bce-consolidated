@@ -1,0 +1,155 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Word <small>: Show All</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/Word</a></li>
+				<li class="active">ShowAllList</li>
+			</ol>
+		</div>
+	</div>
+	<!-- /.row -->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<a class="btn btn-xs btn-primary" ng-click="previous()"> <i
+				class="fa fa-plus">previous</i>
+			</a> <a class="btn btn-xs btn-primary" ng-click="next()"> <i
+				class="fa fa-plus">next</i>
+			</a> <a class="btn btn-xs btn-primary" ng-click="reload()"> <i
+				class="fa fa-plus">reload</i>
+			</a> <a class="btn btn-xs btn-primary" ng-if="!timerStarted"
+				ng-click="slideShowStart()"><i class="fa fa-plus">Show
+					slideshow</i></a> <a class="btn btn-xs btn-primary" ng-if="timerStarted"
+				ng-click="slideShowCancel()"><i class="fa fa-plus">Cancel
+					slideshow</i></a> <a class="btn btn-xs btn-primary"
+				ng-click="showTopicsList()"> <i class="fa fa-plus">Show List</i>
+			</a>
+
+		</div>
+		
+		<div class="col-lg-12">
+		
+			<a class="btn btn-xs btn-primary" href="#/vocabulary/new">Add word</a>
+			
+			<a class="btn btn-xs btn-primary" href="#/vocabulary/export">Export Word</a>
+			
+			<a class="btn btn-xs btn-primary" href="#/vocabulary/import">Import Word</a>
+		
+		</div>
+
+	</div>
+
+
+	<div class="row">
+
+
+		<!-- ######################################### -->
+
+
+
+		<div class="col-lg-4 topicMgmtShowHideAnimation" ng-hide="!showList">
+
+			<!-- ############################## -->
+			
+			
+			
+			<h4>Topic Search:</h4>
+
+			<div class="input-group">
+				<input type="text" data-ng-model="searchText" class="form-control">
+			</div>
+			<!-- /input-group -->
+			You are typing "{{searchText}}" <br /> Number of filtered items:
+			{{filteredItems.length}} <br />
+			<p ng-hide="filteredItems.length">There is no result</p>
+			
+			<table class="friends">
+				<tr>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('title')">Title</button>
+						<span class="sortorder" ng-show="propertyName === 'title'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary"
+							ng-click="sortBy('dateLastModified')">Last Modified</button> <span
+						class="sortorder" ng-show="propertyName === 'dateLastModified'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary"
+							ng-click="sortBy('dateCreated')">Creation Date</button> <span
+						class="sortorder" ng-show="propertyName === 'dateCreated'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('rating')">Rating</button>
+						<span class="sortorder" ng-show="propertyName === 'rating'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+
+					<th>
+						<button class="btn btn-xs btn-primary"
+							ng-click="sortBy('dateLastRead')">Last Read</button> <span
+						class="sortorder" ng-show="propertyName === 'dateLastRead'"
+						ng-class="{reverse: reverse}"></span>
+					</th>
+				</tr>
+
+			</table>
+			<!--####################-->
+
+			<div
+				data-ng-repeat="word in ( filteredItems =(wordList | filter:searchText |orderBy:propertyName:reverse))">
+				<!-- <div class="row resultsDisplay"> -->
+				<div class="row">
+					<div class="row">
+						<span ng-class="{selectedTopicRow: word._id === idSelectedVote}">
+							<a data-ng-click="showAt($index)"> {{word.word}} </a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ######################################### -->
+
+		<div id="topicDetailsDiv" class="col-lg-8">
+			<div data-ng-repeat="word in wordList" class=" row planet prem">
+				<table>
+					<tr>
+						<td>word:
+							<h1>{{$index+1}} : {{word.word}}</h1>
+						</td>
+						<td>type:
+							<h1>{{word.type}}</h1>
+						</td>
+					</tr>
+					<tr>
+						<td>meanings</td>
+						<td>
+							<h1 data-ng-repeat="meaning in word.meanings">{{meaning.id}}
+								: : {{meaning.meaning}}</h1>
+						</td>
+					</tr>
+					<tr>
+						<td>examples</td>
+						<td>
+							<h1 data-ng-repeat="example in word.examples">{{example.id}}
+								: : {{example.example}}</h1>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+
+	</div>
+	<!-- /.row -->
+
+</div>

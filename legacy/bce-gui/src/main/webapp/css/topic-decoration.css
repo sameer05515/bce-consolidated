@@ -1,0 +1,65 @@
+.resultsDisplay {
+    padding: 10px 10px 10px 10px;
+    /** background: rgb(227, 250, 227);*/
+	 background: rgb(255, 255, 255);
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+
+.questionsDisplay {
+    padding: 10px 10px 10px 10px;
+    /** background: rgb(227, 250, 227);*/
+	 /* background: #00ff00255255255; */
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+
+.answersDisplay {
+    padding: 10px 10px 10px 10px;
+    /** background: rgb(227, 250, 227);*/
+	 /* background: #00ffff255255255; */
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+
+/**########################################################################*/
+
+.sortorder:after {
+  content: '\25b2';   /* BLACK UP-POINTING TRIANGLE */
+}
+.sortorder.reverse:after {
+  content: '\25bc';   /* BLACK DOWN-POINTING TRIANGLE */ 
+}
+
+.lalChaukor{
+    background: #C76868;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 12px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 4px 4px 4px;
+    vertical-align: top;
+    line-height: 100%;   
+}
+/**########################################################################*/
+
+.selectedTopicRow {
+  background-color: greenyellow;
+  font-size: 150%;
+}
+
+.selectedWordRow {
+  /* background: green; */
+  font-weight: bold;
+  color: crimson;
+  /* font-size: 12px; */
+  }
+
+.otherUnselectedWordRow{
+  /* background: greenyellow; */
+  font-weight: normal;
+  color: green;
+  /* font-size: 8px; */
+}

@@ -1,0 +1,39 @@
+<!-- <pre>{{eventList | json }}</pre> -->
+
+<div class="row">
+    <div id="idDivELEventsButtonContols" class="col-lg-12">
+        Previous | Next | Reload | <br>
+        SortBy-Combo(if same value selected again, invert order-by direction)
+    </div>
+</div>
+<!-- /. row -->
+<div class="row">
+    <div id="idDivELEventList" class="col-lg-4">
+        <h2><b>Events</b></h2>
+        <a style="margin-bottom: 10px;" class="btn btn-primary btn-block">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add</a>
+
+        <ul class="list-group list-group-scrolling">
+            <li ng-repeat="elEventListItem in eventList | orderBy: 'created_on'"
+                class="list-group-item text-center clearfix">
+                <span style="font-weight: bold">{{elEventListItem.title | uppercase}}</span>
+                <a href="#/addItem/edit/{{elEventListItem.id}}" class="btn btn-sm btn-default pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.idDivEventList -->
+    <div id="idDivELEventsDetails" class="col-lg-8">
+        <!-- Add Controls | Edit Controls -->
+
+        <div ng-include="'partials/event-group-mgmt/template/event-edit-template.html'">
+        </div>
+        <div ng-include="'partials/event-group-mgmt/template/event-add-template.html'">
+        </div>
+        <div ng-include="'partials/event-group-mgmt/template/event-view-template.html'">
+        </div>
+    </div>
+</div>
+<!-- /. row -->

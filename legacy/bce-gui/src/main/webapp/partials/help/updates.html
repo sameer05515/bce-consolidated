@@ -1,0 +1,51 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Topic <small>: {{topic.title}}</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/Topic</a></li>
+				<li class="active">{{topic.title}}</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="well">
+				<h4>Topic,Group,View CURD</h4>
+				<p>Here all the operations related to Topic,Group,View CURD, and UI generation activities </p>
+				
+				<div data-ng-repeat="tgvcurd in topic.topicGroupViewCURD" >
+					<p><i class="fa fa-clock-o"></i><b><span>[{{tgvcurd.date}}]</span></b> [{{tgvcurd.description}}] </p>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="col-lg-4">
+			<div class="well">
+				<h4>Topic,Group,View relation CURD</h4>
+				<p>Here all the operations related to Topic,Group,View CURD, and UI generation activities </p>
+				
+				<div data-ng-repeat="tgvcurdrel in topic.topicGroupViewRelationCURD" >
+					<p><i class="fa fa-clock-o"></i><b><span>[{{tgvcurdrel.date}}]</span></b> [{{tgvcurdrel.description}}] </p>
+				</div>
+			</div>	
+			
+		</div>
+		
+		<div class="col-lg-4">
+			<div class="well">
+				<h4>Other Updates</h4>
+				<p>Here all other updates will be covered</p>
+			</div>
+			
+		</div>
+
+	</div>
+
+</div>

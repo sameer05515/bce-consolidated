@@ -1,0 +1,66 @@
+<div class="container contentAlertDisplay" ng-show="settings.showEditWordSection" data-ng-model="renameFileModel" id="editWordDialog" title="titleOfEditWordDialog" width="100%"
+            height="100%">
+            
+       <!-- <div>
+			<b>Word :</b> 
+		</div>
+		<div >
+			<input type="text" ng-model="pageFormData.templateEditWordData.word"/>
+		</div> -->
+		
+		
+		
+		
+		
+		<div>
+			<b>Unique Name :</b> 
+		</div>
+		<div >
+			<input type="text" ng-model="pageFormData.templateEditWordData.unique_name"/>
+		</div>
+
+
+
+		<div>
+			<b>Word :</b> 
+		</div>
+		<div >
+			<input type="text" ng-model="pageFormData.templateEditWordData.word"/>
+		</div>		
+
+
+
+		<div >
+			<b>Type :</b> 
+		</div>
+		<div >
+			<!-- <input type="text" ng-model="pageFormData.templateEditWordData.type"/> -->
+			<select ng-model="pageFormData.templateEditWordData.type">
+		        <option value="">--Select --</option>
+		        <option ng-repeat="sel in settings.wordTypes" ng-selected="pageFormData.templateEditWordData.type == sel" value="{{sel}}">{{sel}}</option>
+		    </select>
+		</div>	
+
+		<div>
+			<b>Description :</b>
+		</div>
+		<div >
+				<trix-editor angular-trix
+					ng-model="pageFormData.templateEditWordData.details"></trix-editor>
+		</div>
+		
+		<div>
+			
+			<a class="btn btn-xs btn-primary" ng-click="updateWordObj(pageFormData.templateEditWordData)">Save
+				<i class="fa fa-angle-right"></i>
+			</a>
+			
+		</div>
+		
+		<!-- <div>
+		pageFormData.templateEditWordData:{{pageFormData.templateEditWordData}}
+		</div> -->
+
+
+
+</div>

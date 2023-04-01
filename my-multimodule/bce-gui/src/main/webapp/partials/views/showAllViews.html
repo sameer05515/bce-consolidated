@@ -1,0 +1,34 @@
+<div class="container jumbotron">
+
+
+
+	<div data-ng-repeat="view in viewsList">
+	
+		<div class="row resultsDisplay">
+			<div class="col-sm-12 col-md-12">
+				<div class="row">
+					<div class="col-sm-3 col-md-3">
+						<span class="glyphicon glyphicon-search" aria-hidden="true">
+							<a href="#/views/{{view.id}}">
+								Update
+							</a>
+						</span> 
+					</div>
+					
+					<div class="col-sm-9 col-md-9">
+						{{view.title}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						
+						<div ng-bind-html="view.description"></div>
+					</div>
+				</div>			
+			<div>
+		</div>
+
+		
+	</div>
+
+</div>
