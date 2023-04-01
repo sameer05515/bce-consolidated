@@ -90,7 +90,9 @@ public class TopicSessionImpl implements TopicSession {
 		} catch (Exception e) {
 			throw new RestServiceException(e);
 		} finally {
-			session.close();
+			if(session!=null){
+				session.close();
+			}
 		}
 		return accounts;
 

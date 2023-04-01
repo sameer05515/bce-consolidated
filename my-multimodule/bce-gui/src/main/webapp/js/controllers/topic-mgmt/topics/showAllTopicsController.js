@@ -78,6 +78,19 @@ app
 				});
 			};
 
+			$scope.fetchTopicObj = function() {
+
+				TopicManagementServices.fetchTopicObj($scope.topic.id)
+						.success(function(data) {
+							// $log.log("Success : "+data);
+							//$scope.topicObj = data;
+							$scope.topic = data;
+							$scope.fetchTopicReads();
+						}).error(function(data) {
+							$log.log("Error : " + data);
+						});
+			};
+
 			// ////////Marking and Fetching reads - end
 
 			$scope.idSelectedVote = null;
@@ -89,7 +102,8 @@ app
 				$scope.counterrr = indexVal;
 				$scope.topic = $scope.filteredItems[$scope.counterrr];
 				$scope.setSelected($scope.topic.id);
-				$scope.fetchTopicReads();
+				// $scope.fetchTopicReads();
+				$scope.fetchTopicObj();
 				// $scope.counterrr = ($scope.counterrr >=
 				// $scope.filteredItems.length -
 				// 1) ? 0
@@ -105,7 +119,8 @@ app
 						: $scope.counterrr + 1;
 				$scope.topic = $scope.filteredItems[$scope.counterrr];
 				$scope.setSelected($scope.topic.id);
-				$scope.fetchTopicReads();
+				// $scope.fetchTopicReads();
+				$scope.fetchTopicObj();
 			};
 
 			$scope.previous = function() {
@@ -113,7 +128,8 @@ app
 						: $scope.counterrr - 1;
 				$scope.topic = $scope.filteredItems[$scope.counterrr];
 				$scope.setSelected($scope.topic.id);
-				$scope.fetchTopicReads();
+				// $scope.fetchTopicReads();
+				$scope.fetchTopicObj();
 			};
 
 			$scope.timerStarted = false;
