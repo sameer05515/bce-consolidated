@@ -1,0 +1,123 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-lg-12">
+			<h1 class="page-header">
+				All Topics <small>: A Brief overview</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home</a></li>
+				<li class="active">All Topics</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="well col-lg-12">
+			<h4>Topic Search:</h4>
+
+			<div class="input-group">
+				<input type="text" data-ng-model="searchText" class="form-control">
+			</div>
+			<!-- /input-group -->
+			You are typing "{{searchText}}" <br /> Number of filtered items:
+			{{filteredItems.length}} <br />
+			<p ng-hide="filteredItems.length">There is no result</p>
+
+			<a class="btn btn-xs btn-primary" href="#/topics/new">Create New
+				Topic<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+		<!-- /well -->
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+
+			<!--####################-->
+			<table class="friends">
+				<tr>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('title')">Title</button>
+						<span class="sortorder" ng-show="propertyName === 'title'" ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('dateLastModified')">Last
+							Modified</button> <span class="sortorder" ng-show="propertyName === 'dateLastModified'"
+							ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button class="btn btn-xs btn-primary" ng-click="sortBy('dateCreated')">Creation Date</button>
+						<span class="sortorder" ng-show="propertyName === 'dateCreated'"
+							ng-class="{reverse: reverse}"></span>
+					</th>
+					<th><b><input type="checkbox" ng-model="showPrivateTopics" />Show
+							Private Topics</b></th>
+
+				</tr>
+
+			</table>
+			<!--####################-->
+
+			<!-- <div data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText |orderBy:'title'))" > -->
+			<div
+				data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText |filter:filterPrivateTopics |orderBy:propertyName:reverse))">
+				<div class="row resultsDisplay">
+					<div class="col-sm-12 col-md-12">
+						<div class="row">
+							<div class="col-md-1">
+								<p>
+									<i class="fa fa-file-text fa-4x"></i>
+								</p>
+							</div>
+
+							<div class="col-md-11">
+								<h4>
+									<a href="#/topics-list/{{topic.id}}">{{topic.title}}</a> <span star-rating
+										rating-value="topic.rating" edit-star-rating="false"
+										max="maxRatingValue"></span>
+								</h4>
+
+								<!-- <p>
+									Related Groups <a href="">grp 1</a> , <a href="">grp 2</a>
+								</p>
+
+								<p>
+									Related Views <a href="">view 1</a> , <a href="">view 2</a>
+								</p>
+
+								<p>
+									Related Topics <a href="">view 1</a> , <a href="">view 2</a>
+								</p> -->
+
+
+								<p>
+									<a class="btn btn-xs btn-primary" href="#/topics-list/{{topic.id}}">
+										Read More
+										<i class="fa fa-angle-right"></i>
+									</a>
+									
+									<i class="fa fa-clock-o"></i> Last Modified on <b><span
+											ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+
+									<i class="fa fa-clock-o"></i> Created on <b><span
+											ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+								</p>
+
+								
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--row resultsDisplay-->
+			</div>
+			<!--End of data-ng-repeat-->
+
+			<hr>
+		</div>
+		<!--End Column col-sm-12 col-md-12-->
+	</div>
+	<!--End Row-->
+</div>

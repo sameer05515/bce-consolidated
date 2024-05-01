@@ -1,0 +1,205 @@
+<div class="container">
+
+
+    <div class="row" onkeydown="bodyKeyDownEventListener(event)">
+
+        <div class="col-sm-4 topicMgmtShowHideAnimation class-list-interview-mgmt-categ-ques-name-section"
+            ng-hide="!showList">
+
+            <!-- ############################## -->
+            <h4>Interview Question Search:</h4>
+
+            <div class="input-group">
+                <input type="text" data-ng-model="searchText" class="form-control">
+            </div>
+            <!-- /input-group -->
+            You are typing "{{searchText}}"
+            <br /> Number of filtered items: {{filteredItems.length}}
+            <br />
+            <p ng-hide="filteredItems.length">There is no result</p>
+
+            <!--####################-->
+            
+            <table class="friends">
+                <tr>
+                    <th>
+                        <button class="btn btn-xs btn-primary" ng-click="sortBy('questionName')">Title</button>
+                        <span class="sortorder" ng-show="propertyName === 'questionName'"
+                            ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th>
+                        <button class="btn btn-xs btn-primary" ng-click="sortBy('dateLastModified')">Last
+                            Modified</button>
+                        <span class="sortorder" ng-show="propertyName === 'dateLastModified'"
+                            ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th>
+                        <button class="btn btn-xs btn-primary" ng-click="sortBy('dateCreated')">Creation
+                            Date</button>
+                        <span class="sortorder" ng-show="propertyName === 'dateCreated'"
+                            ng-class="{reverse: reverse}"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <button class="btn btn-xs btn-primary" ng-click="sortBy('categoryId')">Category Id</button>
+                        <span class="sortorder" ng-show="propertyName === 'categoryId'"
+                            ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th>
+                        <button class="btn btn-xs btn-primary" ng-click="sortBy('rating')">Rating</button>
+                        <span class="sortorder" ng-show="propertyName === 'rating'"
+                            ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th>
+                        <button class="btn btn-xs btn-primary" ng-click="sortBy('dateLastRead')">Last Read
+                            Date</button>
+                        <span class="sortorder" ng-show="propertyName === 'dateLastRead'"
+                            ng-class="{reverse: reverse}"></span>
+                    </th>
+                </tr>
+            </table>
+            
+            <!-- <div data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText 
+            |orderBy:propertyName:reverse))">                
+                <div class="row">                    
+                    <div ng-class="{selectedTopicRow: $index === counter}">
+                        <a data-ng-click="showAt($index)">                            
+                            <span ng-bind-html="topic.questionName"></span>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+
+            <ul class="list-group class-list-group-interview-mgmt-categ-ques-name-section">
+                <li data-ng-repeat="topic in ( filteredItems =(topicsList | filter:searchText 
+            |orderBy:propertyName:reverse))" class="list-group-item text-center clearfix">
+                    <div class="row">
+                        <div id="{{'question-'+$index}}"
+                        ng-class="{selectedTopicRow: $index === counter}">
+                            <a data-ng-click="showAt($index)">
+                                <span ng-bind-html="topic.questionName"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+
+        <div id="topicDetailsDiv" class="col-sm-8 class-div-interview-mgmt-categ-ques-details-section">
+
+            <a class="btn btn-xs btn-primary" ng-click="previous()">
+                <i class="fa fa-plus">previous</i>
+            </a>
+            <a class="btn btn-xs btn-primary" ng-click="next()">
+                <i class="fa fa-plus">next</i>
+            </a>
+            <a class="btn btn-xs btn-primary" ng-click="showTopicsList()">
+                <i class="fa fa-plus">{{listShowingButtonCaption}}</i>
+            </a>
+
+            <a class="btn btn-xs btn-primary" style="float: right;padding-right: 5px;padding-left: 3px;"
+                    target="_blank" href="#/categories/{{topic.categoryId}}/questions/{{topic.questionId}}">
+                    Modify
+                    <i class="fa fa-angle-right"></i>
+                </a>
+
+                <a class="btn btn-xs btn-primary"  style="float: right;padding-right: 5px;padding-left: 3px;"
+                 ng-click="saveTopicReads('read')">Mark
+                    as Read today <i class="fa fa-angle-right"></i>
+                </a>
+
+            <br>
+            Hide questions updated in last <input type="text" data-ng-model="lastNDay"></input> days
+            <a class="btn btn-xs btn-primary">
+                <i class="fa fa-plus">Reload</i>
+            </a>  
+
+            <p>
+                <small class="text-muted">
+                    <i class="fa fa-clock-o"></i> Last Read on <b> <span
+                            ng-bind="pageFormData.pagedData.selectedWordDataItem.wordReads.word.last_read | date:'MMM/dd/yyyy hh:mm:ss a'">
+                        </span> |
+                    </b>
+                </small>
+
+                <small class="text-muted">
+                    <i class="fa fa-clock-o"></i> Last Modified on
+                <b>
+                    <span ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span>
+                </b> |
+                    
+                </small>
+
+                <small class="text-muted">
+                    <i class="fa fa-clock-o"></i> Created on
+                <b>
+                    <span ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span>
+                </b>
+                </small> <br>
+
+                <span class="badge">Total Reads :-
+                    {{pageFormData.pagedData.selectedWordDataItem.wordReads.count}}</span>
+            </p>
+
+
+            <!-- <div class="page-header"> -->
+                <small style="font: 100% sans-serif;color: #00ff00;">
+                    Category : <span style="font-weight: bold;" ng-bind-html="topic.categoryName"></span>
+                </small>
+                Interview Question
+                <small style="font: 150% sans-serif;color: #ff000d;">: [{{counter+1}}]
+                    <span style="font-weight: bold;" ng-bind-html="topic.questionName" ></span>
+                </small>
+            <!-- </div> -->
+
+            <!-- <p>
+                <i class="fa fa-clock-o"></i> Last Modified on
+                <b>
+                    <span ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span>
+                </b>
+            </p> -->
+            <!-- <p>
+                <i class="fa fa-clock-o"></i> Created on
+                <b>
+                    <span ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span>
+                </b>
+            </p> -->
+
+            <!-- <p ng-if="topic!==undefined">
+                <a class="btn btn-xs btn-primary"
+                    href="#/categories/{{topic.categoryId}}/questions/{{topic.questionId}}">
+                    Modify
+                    <i class="fa fa-angle-right"></i>
+                </a>
+
+                <a class="btn btn-xs btn-primary" ng-click="saveTopicReads('read')">Mark
+                    as Read today <i class="fa fa-angle-right"></i>
+                </a>
+
+                <i class="fa fa-clock-o"></i> Last Read on <b><span
+                        ng-bind="topicsReads.topic.dateLastRead | date:'MMM/dd/yyyy hh:mm:ss a'">
+                    </span></b>
+            </p> -->
+
+            <div class="resultsDisplay class-list-group-interview-mgmt-categ-ques-ans-name-section">
+                <!-- Category : <span ng-bind-html="topic.categoryName"></span> <br />
+                Question : <span ng-bind-html="topic.questionName"></span> <br /> -->
+
+                <div style="border: 1px solid rgb(171, 239, 171); margin: 3px; padding: 5px;"
+                    data-ng-repeat="answ in topic.answers">
+                    <small>
+                        <span style="color:#520cd4;">Answer :[{{$index + 1}}]</span>
+                    </small>
+                    <span star-rating rating-value="answ.rating" edit-star-rating="false" max="maxRatingValue"></span>
+                    <span ng-bind-html="answ.answer"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- /. container -->

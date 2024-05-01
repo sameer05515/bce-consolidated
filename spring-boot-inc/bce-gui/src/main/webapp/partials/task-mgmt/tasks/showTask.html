@@ -1,0 +1,103 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Task <small>: {{topic.title}}</small>
+				<span star-rating rating-value="topic.rating" edit-star-rating="false" max="maxRatingValue"></span>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/Task</a></li>
+				<li class="active">{{topic.title}}</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-8">
+			
+
+			<div class="well">
+				<b>
+					<h3>Task Description (Why and what to achieve) :</h3>
+				</b>
+				<span ng-bind-html="topic.taskDescription"></span>
+			</div>
+
+			<hr>
+
+			<div class="well">
+				<b>
+					<h3>Impact Analysis (What if not doing) :</h3>
+				</b>
+				<span ng-bind-html="topic.whatIfNotDoing"></span>
+			</div>
+
+			<hr>
+
+			<div class="well">
+				<b>
+					<h3>Routine Schedule Description (How to achieve) :</h3>
+				</b>
+				<span ng-bind-html="topic.routineScheduleDescription"></span>
+			</div>
+
+			<hr>
+
+			<div class="well">
+				<b>
+					<h3>Remarks/Task History :</h3>
+				</b>
+				<span ng-bind-html="topic.remarks"></span>
+			</div>
+
+			<hr>
+
+
+
+		</div>
+		<!--End Column col-lg-8-->
+
+		<div class="col-lg-4">
+
+			<!-- <div class="well">
+				<b>Task Description (Why and what to achieve) :</b>
+				<span ng-bind-html="topic.taskDescription"></span>
+			</div> -->
+			<!-- /well -->
+
+			<!-- <div class="well">
+				<b>Impact Analysis (What if not doing) :</b>
+				<span ng-bind-html="topic.whatIfNotDoing"></span>
+			</div> -->
+			<!-- /well -->
+
+
+
+			<div class="well">
+				<p>
+					<i class="fa fa-clock-o"></i> Last Modified on <b><span
+							ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+				</p>
+				<p>
+					<i class="fa fa-clock-o"></i> Created on <b><span
+							ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+				</p>
+				<a class="btn btn-xs btn-primary" href="#/tasks/{{topic.id}}">Modify
+					<i class="fa fa-angle-right"></i>
+				</a> <a class="btn btn-xs btn-primary" href="#/tasks-list">Back to
+					list <i class="fa fa-angle-right"></i>
+				</a>
+			</div>
+			<!-- /well -->
+
+
+
+
+		</div>
+		<!--End Column col-lg-4-->
+	</div>
+	<!--End Row-->
+
+</div>

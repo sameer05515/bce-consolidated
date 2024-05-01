@@ -1,0 +1,57 @@
+
+/* body {
+	width: 650px;
+	margin: 0 auto;
+	background: green;
+	background: #000;
+	color: #FFF;
+	font: 12px sans-serif;
+} */
+
+.planet h1 {
+	font-size: 24px;
+}
+
+.planet h2 {
+	font-size: 18px;
+	margin-top: 0;
+}
+
+.planet a {
+	color: #FFF;
+}
+
+.planet a:focus,.planet  a:hover {
+	text-decoration: none;
+}
+
+.planet table {
+	margin-bottom: 10px;
+	border-spacing: 0;
+}
+
+.planet caption {
+	margin-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.planet th,.planet td {
+	padding: 0 10px 0 0;
+	text-align: left;
+}
+
+.planet {
+	margin: 10px 0;
+	padding: 20px 20px 20px 200px;
+	border: 1px solid #FFF;
+	background-position: 100px 20px;
+	color: #FFF;
+	font: 12px sans-serif;
+	/*background-repeat: no-repeat;*/
+}
+
+.prem {
+	background-image: url(prem.jpg);
+}

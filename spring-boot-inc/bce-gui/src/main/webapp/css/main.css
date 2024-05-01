@@ -1,0 +1,245 @@
+/* 
+Custom CSS for...
+'Modern Business' HTML Theme by Start Bootstrap
+
+All Start Bootstrap themes are licensed under Apache 2.0. 
+For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
+*/
+
+/* Global Styles */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.dropdown {
+    cursor:pointer;
+}
+
+
+.img-home-portfolio,
+.img-customer,
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.tab-pane {
+    margin-top: 15px;
+}
+
+.resume-experience {
+    padding: 5px 5px;
+    margin: 5px 5px 5px 5px;
+    background-color: #d9ebf1;
+    border: 1px solid #131212;
+}
+
+/* Page Sections */
+.section,
+.section-colored {
+    padding: 50px 0;
+}
+
+.section-colored {
+    background-color: #e1e1e1;
+    /* change this to change the background color of a colored section */
+}
+
+.sidebar {
+    margin-top: 40px;
+}
+
+.sidebar ul {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #cccccc;
+}
+
+/* Half Page Height Carousel Customization */
+.carousel {
+    height: 50%;
+}
+
+.item,
+.active,
+.carousel-inner {
+    height: 100%;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Social Icons Styles */
+.list-social-icons {
+    margin-bottom: 45px;
+}
+
+.tooltip-social a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.facebook-link a:hover {
+    color: #3b5998;
+}
+
+.linkedin-link a:hover {
+    color: #007fb1;
+}
+
+.twitter-link a:hover {
+    color: #39a9e0;
+}
+
+.google-plus-link a:hover {
+    color: #d14836;
+}
+
+/* Service Page Styles */
+.service-icon {
+    font-size: 50px;
+}
+
+/* 404 Page Styles */
+.error-404 {
+    font-size: 8em;
+}
+
+/* Pricing Page Styles */
+.price {
+    font-size: 4em;
+}
+
+.price-cents {
+    vertical-align: super;
+    font-size: 50%;
+}
+
+.price-month {
+    font-size: 35%;
+    font-style: italic;
+}
+
+/* Footer Styles */
+footer {
+    margin: 50px 0;
+}
+
+.list-group-scrolling{
+    max-height: 100px;
+    /* margin-bottom: 10px; */
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-scrolling-for-word-list{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    height: 450px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+#list-word-name-section{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    height: 300px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+#div-word-details-section{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    height: 300px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.class-list-interview-mgmt-categ-ques-name-section{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    
+    height: 520px;
+    /* overflow:scroll;
+    -webkit-overflow-scrolling: touch; */
+}
+
+.class-list-group-interview-mgmt-categ-ques-name-section{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    
+    height: 300px;
+     overflow:auto; 
+     -webkit-overflow-scrolling: touch;
+     font-weight: bold;
+    /* overflow:scroll;
+    -webkit-overflow-scrolling: touch; */
+}
+
+.class-list-group-interview-mgmt-categ-ques-name-section::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  .class-list-group-interview-mgmt-categ-ques-name-section::-webkit-scrollbar-track {
+    background: orange;        /* color of the tracking area */
+  }
+  .class-list-group-interview-mgmt-categ-ques-name-section::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+  }
+
+  .class-list-group-interview-mgmt-categ-ques-ans-name-section{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    
+    height: 300px;
+     overflow:auto; 
+     -webkit-overflow-scrolling: touch;
+     /* font-weight: bold; */
+    /* overflow:scroll;
+    -webkit-overflow-scrolling: touch; */
+}
+
+.class-list-group-interview-mgmt-categ-ques-ans-name-section::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  .class-list-group-interview-mgmt-categ-ques-ans-name-section::-webkit-scrollbar-track {
+    background: orange;        /* color of the tracking area */
+  }
+  .class-list-group-interview-mgmt-categ-ques-ans-name-section::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+  }
+
+
+.class-div-interview-mgmt-categ-ques-details-section{
+    /* max-height: 100px; */
+    /* margin-bottom: 10px; */
+    
+    height: 520px;
+    /* overflow:auto;
+    -webkit-overflow-scrolling: touch; */
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+
+    .carousel {
+        height: 70%;
+        /* increases the carousel height so it looks good on phones */
+    }
+}

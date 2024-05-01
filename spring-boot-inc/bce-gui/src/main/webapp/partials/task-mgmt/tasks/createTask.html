@@ -1,0 +1,330 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Task <small>: New</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/Task</a></li>
+				<li class="active">New</li>
+			</ol>
+		</div>
+	</div>
+	<!-- /.row -->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Create New Task</h3>
+		</div>
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Title :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<input type="text" ng-model="topicObj.title" />
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Environment :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.environment" />
+		</div> -->
+		
+		<div class="col-lg-12">
+			<select name="repeatSelectEnvironmentsData" 
+				id="repeatSelectEnvironmentsData" 
+				ng-model="topicObj.environment" >
+				<option value="All">--Select Environment--</option>
+				<option ng-repeat="option in environmentsData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+		
+		
+		<!-- /.col-lg-12 -->
+
+		
+
+		<div class="col-lg-12">
+			<b>Task Description (Why and what to achieve) :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<trix-editor angular-trix ng-model="topicObj.taskDescription"></trix-editor>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Frequency :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.frequency" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatSelectFrequenciesData" 
+				id="repeatSelectFrequenciesData" 
+				ng-model="topicObj.frequency" >
+				<option value="All">--Select Frequency--</option>
+				<option ng-repeat="option in frequenciesData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Activity Type :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.activityType" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatSelectActivityTypesData" 
+				id="repeatSelectActivityTypesData" 
+				ng-model="topicObj.activityType">
+				<option value="All">--Select Activity Type--</option>
+				<option ng-repeat="option in activityTypesData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Box :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.box" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatSelectBoxsData" 
+				id="repeatSelectBoxsData" 
+				ng-model="topicObj.box">
+				<option value="All">--Select Box--</option>
+				<option ng-repeat="option in boxsData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Sequence :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.sequence" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatSelectSequencesData" 
+				id="repeatSelectSequencesData" 
+				ng-model="topicObj.sequence">
+				<option value="All">--Select Sequence--</option>
+				<option ng-repeat="option in sequencesData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Remarks (Task history/Summary) :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<trix-editor angular-trix ng-model="topicObj.remarks"></trix-editor>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Routine Schedule Description (How to achieve) :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<trix-editor angular-trix ng-model="topicObj.routineScheduleDescription"></trix-editor>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Impact Analysis (What if not doing) :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<trix-editor angular-trix ng-model="topicObj.whatIfNotDoing"></trix-editor>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Status :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.status" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatSelectStatusData" 
+				id="repeatSelectStatusData" 
+				ng-model="topicObj.status">
+				<option value="All">--Select Status--</option>
+				<option ng-repeat="option in statusData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Schedule Date :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<input type="date" ng-model="topicObj.scheduleDate" format-date />
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>End Date :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<input type="date" ng-model="topicObj.endDate" format-date />
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Performed By :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.performedBy" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatPerformedByData" 
+				id="repeatPerformedByData" 
+				ng-model="topicObj.performedBy">
+				<option value="All">--Select Performed By--</option>
+				<option ng-repeat="option in performedByData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Task Priority Group :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<!-- <div class="col-lg-12">
+			<input type="text" ng-model="topicObj.taskPriorityGroup" />
+		</div> -->
+
+		<div class="col-lg-12">
+			<select name="repeatTaskPriorityGroupData" 
+				id="repeatTaskPriorityGroupData" 
+				ng-model="topicObj.taskPriorityGroup">
+				<option value="All">--Select Task Priority Group--</option>
+				<option ng-repeat="option in taskPriorityGroupData" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Next Occurance :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<input type="date" ng-model="topicObj.nextOccurance" format-date />
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Highest Point :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<input type="text" ng-model="topicObj.highestPoint" />
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<!-- component -->
+		<div class="col-lg-12">
+			<b>Points Earned Today :</b>
+		</div>
+		<!-- /.col-lg-12 -->
+
+		<div class="col-lg-12">
+			<input type="text" ng-model="topicObj.pointsEarnedToday" />
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		
+		
+		
+		
+		
+		<div class="col-lg-12">
+			<b>Priority :[{{topicObj.rating}}]</b>
+		</div>
+		<!-- /.col-lg-12 -->
+		
+		<div class="col-lg-12">
+			<div star-rating rating-value="topicObj.rating" max="maxRatingValue"
+					edit-star-rating="true"
+					on-rating-selected="getSelectedRating(rating)"></div>
+		</div>
+		<!-- /.col-lg-12 -->				
+
+		<div class="col-lg-12">
+			<a class="btn btn-xs btn-primary" ng-click="saveTopicObj()">Save
+				<i class="fa fa-angle-right"></i>
+			</a> <a class="btn btn-xs btn-primary" href="#/tasks-list">Back to
+				list<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+
+	<div confirm-on-exit="isDirty()"
+		confirm-message-window="All your changes will be lost."
+		confirm-message-route="All your changes will be lost. Are you sure you want to do this?">
+	</div>
+
+	<!-- {{topicObj|json}} -->
+</div>

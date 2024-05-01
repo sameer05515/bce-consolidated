@@ -1,0 +1,124 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Group <small>: {{group.title}}</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/Group</a></li>
+				<li class="active">{{group.title}}</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-8">
+			<hr>
+			<div class="resultsDisplay" ng-bind-html="group.description"></div>
+			<hr>
+		</div>
+		<!--End Column col-lg-8-->
+
+		<div class="col-lg-4">
+
+			<div class="well">
+				<h4>Brief description for group</h4>
+				<p>One brief description of all groups should come here.</p>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<p>
+					<i class="fa fa-clock-o"></i> Last Modified on <b><span
+						ng-bind="group.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+				</p>
+				<p>
+					<i class="fa fa-clock-o"></i> Created on <b><span
+						ng-bind="group.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+				</p>
+				<a class="btn btn-xs btn-primary" href="#/groups/{{group.id}}">Modify
+					<i class="fa fa-angle-right"></i>
+				</a> <a class="btn btn-xs btn-primary" href="#/groups-list">Back to
+					list <i class="fa fa-angle-right"></i>
+				</a>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<!-- Related goups lists comes from all groups which are part of views to which current group is associated with. -->
+				<h4>Related Groups</h4>
+				<br /> <a href="">grp 1</a> <br /> <a href="">grp 2</a>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<h4>
+					Related Views <a class="btn btn-xs btn-primary"
+						ng-click="fetchViewList()"><i class="fa fa-plus">Add</i></a>
+				</h4>
+
+				<div
+					ng-repeat="view in (filteredViewItems=(viewsList| filter:filterAlreadyAddedView))">
+					<input type='checkbox' value="{{view}}" check-list="checked_view">
+					{{view.title}} &nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				<a class="btn btn-xs btn-primary"
+					ng-click="saveGroupViewRelationList()"
+					ng-if="filteredViewItems.length>0">Save</a> <a
+					class="btn btn-xs btn-primary"
+					ng-click="resetViewsAndShowGroupViewRelations()"
+					ng-if="filteredViewItems.length>0">Cancel</a>
+
+				<div ng-repeat="groupViewRelation in groupViewRelationList">
+					<a href="#/views-list/{{groupViewRelation.views.id}}">{{groupViewRelation.views.title}}</a>
+					<!-- <a class="btn btn-xs btn-primary" href="#">Remove<i
+						class="fa fa-minus"></i></a> -->
+				</div>
+
+				<!-- <br />
+				<a href="">view 1</a> <br />
+				<a href="">view 2</a> -->
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<!-- <h4>Related Topics</h4> 
+            	<br/><a href="">topic 1</a>
+            	<br/><a href="">topic 2</a>	 -->
+
+				<h4>
+					Related Topics
+					<!-- <button class="lalChaukor">+</button> -->
+					<a class="btn btn-xs btn-primary" ng-click="fetchTopicList()"><i
+						class="fa fa-plus">Add</i></a>
+				</h4>
+
+				<div
+					ng-repeat="topic in (filteredTopicItems=(topicsList| filter:filterAlreadyAddedTopic))">
+					<input type='checkbox' value="{{topic}}" check-list="checked_topic">
+					{{topic.title}} &nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				<a class="btn btn-xs btn-primary"
+					ng-click="saveTopicGroupRelationList()"
+					ng-if="filteredTopicItems.length>0">Save</a> <a
+					class="btn btn-xs btn-primary"
+					ng-click="resetTopicsAndShowTopicGroupRelations()"
+					ng-if="filteredTopicItems.length>0">Cancel</a>
+				<!-- {{checked_groups}} -->
+
+				<div ng-repeat="topicGroupsRelation in topicGroupsRelationList">
+					<a href="#/topics-list/{{topicGroupsRelation.topics.id}}">{{topicGroupsRelation.topics.title}}</a>
+					<!-- <a class="btn btn-xs btn-primary" href="#">Remove<i
+						class="fa fa-minus"></i></a> -->
+				</div>
+			</div>
+			<!-- /well -->
+
+		</div>
+		<!--End Column col-lg-4-->
+	</div>
+	<!--End Row-->
+
+</div>

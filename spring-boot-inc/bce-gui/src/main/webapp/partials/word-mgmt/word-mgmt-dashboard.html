@@ -1,0 +1,335 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Word <small>: New</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Home/Word</a></li>
+				<li class="active">New</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="well col-lg-12" ng-init="showSearchDiv=false;">
+			<h4>Word Search:
+				<a class="btn btn-xs btn-primary" ng-click="showSearchDiv=!showSearchDiv;">
+
+					<span ng-if="showSearchDiv" class="glyphicon glyphicon-search">
+						Hide Search Section
+					</span>
+					<span ng-if="!showSearchDiv" class="glyphicon glyphicon-search">
+						Show Search Section
+					</span>
+				</a>
+			</h4>
+
+			<div class="row" ng-show="showSearchDiv">
+				<div class="col-lg-12">
+					<input type="text" data-ng-model="pageFormData.searchText" />
+
+
+					<a class="btn btn-xs btn-primary" ng-click="search(pageFormData.searchText)"
+						ng-if="!showAddNewWordSection">Search<span class="glyphicon glyphicon-search"></span>
+					</a>
+
+					You are typing "{{pageFormData.lastSearchedWord}}" | Number of filtered items:
+					{{pageFormData.searchedItems.length}}
+					<span ng-hide="pageFormData.searchedItems.length">| There is no result</span>
+					<br />
+				</div>
+			</div>
+
+			<div class="row" ng-show="showSearchDiv">
+				<div class="col-lg-12">
+					<a class="btn btn-xs btn-primary" ng-click="showSection(settings.sectionNames.AddNewWord)">Add New
+						Word<i class="fa fa-angle-right"></i>
+					</a>
+
+					<a class="btn btn-xs btn-primary" ng-click="exportWordMgmt()">Export All word Data</a>
+				</div>
+			</div>
+
+			<div class="row" ng-show="showSearchDiv && settings.showSearchedItemsData">
+				<div class="col-lg-12">
+					<div class="row" ng-style="stylesData.templateParentDescriptionStyle"
+						ng-include="'templates/word-mgmt/wordData_item_renderer.html'">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12" ng-show="showSearchDiv">
+					<b>Criteria : Get words </b>
+					<br>
+
+					<b>where</b>
+					<br>
+
+					<b>Last Read On </b> is <input type="number" min="0"
+						ng-model="pageFormData.criteriaObj.lastReadOnDaysBack" name=""
+						id="criteriaInputLastReadOnDaysBack"> <b>Days Back</b> <br>
+					<b>Last Updated On </b> is <input type="number" min="0"
+						ng-model="pageFormData.criteriaObj.lastUpdatedOnDaysBack" name=""
+						id="criteriaInputLastUpdatedOnDaysBack"> <b>Days Back</b> <br>
+					<b>Last Read On </b> is <input type="number" min="0"
+						ng-model="pageFormData.criteriaObj.createdOnDaysBack" name=""
+						id="criteriaInputCreatedOnDaysBack"> <b>Days Back</b> <br>
+					<b>page size</b> <input type="number" min="1" ng-model="pageFormData.criteriaObj.pageSize" name=""
+						id="criteriaInputPageSize">
+
+					<b>slideshow duration</b>
+					<input type="number" min="5000" ng-model="pageFormData.criteriaObj.slideshowDuration" name=""
+						id="criteriaInputSlideshowDuration">
+
+					<br>
+					<b>order by</b>
+					<select name="" id="criteriaSelectOrderByDate"
+						ng-model="pageFormData.criteriaObj.selectedOrderByDate">
+						<option value="lastReadOn">Last Read On</option>
+						<option value="lastUpdatedOn">Last Updated On</option>
+						<option value="createdOn" selected>Created On</option>
+					</select>
+
+					<b>direction</b>
+					<select name="" id="criteriaSelectOrderByDateDirection"
+						ng-model="pageFormData.criteriaObj.selectedOrderByDateDirection">
+						<option value="ASC">Ascending</option>
+						<option value="DESC" selected>Descending</option>
+					</select>
+
+
+
+					<br>
+					<pre>
+						pageFormData.criteriaObj: <br>
+						{{pageFormData.criteriaObj | json }}
+					</pre>
+					<!-- <a class="btn btn-xs btn-primary" ng-click="findPagedData()">Reload</a> -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<div class="row" ng-show="settings.showAllWordsInPagination">
+		<div class="well col-lg-12">
+			<a class="btn btn-xs btn-primary" ng-click="previous()"> <i class="fa fa-plus">previous</i>
+			</a> <a class="btn btn-xs btn-primary" ng-click="next()"> <i class="fa fa-plus">next</i>
+			</a>
+
+			</a> <a class="btn btn-xs btn-primary" ng-click="reload()"> <i class="fa fa-plus">reload</i>
+			</a>
+
+			<a class="btn btn-xs btn-primary" ng-if="!timerStarted" ng-click="slideShowStart()"><i
+					class="fa fa-plus">Show
+					slideshow</i></a>
+			<a class="btn btn-xs btn-primary" ng-if="timerStarted" ng-click="slideShowCancel()"><i
+					class="fa fa-plus">Cancel
+					slideshow</i></a>
+			<a class="btn btn-xs btn-primary" ng-click="showTopicsList()"> <i class="fa fa-plus">Show List</i>
+			</a>
+
+			<a class="btn btn-xs btn-primary" ng-click="findPagedData(-1)"
+				ng-disabled="!pageFormData.pagedData.enablePrevButton"> <i class="fa fa-plus">PreviousPage</i>
+			</a>
+
+			<a class="btn btn-xs btn-primary" ng-click="findPagedData(1)"
+				ng-disabled="!pageFormData.pagedData.enableNextButton"> <i class="fa fa-plus">NextPage</i>
+			</a>
+
+			<b>Page No: </b>{{pageFormData.pagedData.pageNo+1}} <b>&nbsp;&nbsp;&nbsp;&nbsp;Counter: </b>{{counterrr+1}}
+			<b>&nbsp;&nbsp;&nbsp;&nbsp;Page Size: </b>{{pageFormData.pagedData.pageSize}}
+		</div>
+
+		<div id="list-word-name-section" class="col-lg-4 topicMgmtShowHideAnimation" ng-hide="!showList">
+			<!-- <div
+				data-ng-repeat="pagedDataItem in (filteredItems = (pageFormData.pagedData.items))">
+				<div class="row">
+					<div ng-class="{selectedWordRow: pagedDataItem.id === idSelectedVote}">
+						<a data-ng-click="showAt($index)">
+							<span ng-bind-html="pagedDataItem.word"/>
+						</a>
+					</div>
+				</div>
+			</div> -->
+
+			<ul class="list-group">
+				<li ng-repeat="pagedDataItem in (filteredItems = (pageFormData.pagedData.items))"
+					class="list-group-item text-center clearfix">
+					<div class="row">
+						<div id="{{'word-'+$index}}"
+							ng-class="{selectedWordRow: pagedDataItem.id === idSelectedVote,otherUnselectedWordRow: (pagedDataItem.id !== idSelectedVote)}">
+							<a data-ng-click="showAt($index)">
+								<span ng-bind-html="pagedDataItem.word" />
+							</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div id="div-word-details-section" ng-show=(pageFormData.pagedData.selectedWordDataItem) 
+		class="card col-lg-8">
+			<!-- <pre>{{pageFormData.pagedData.selectedWordDataItem|json}}</pre> -->
+
+			<div class="card-header">
+
+
+
+				<a class="btn btn-xs btn-primary"
+					ng-click="updateWord(pageFormData.pagedData.selectedWordDataItem)">Edit in Popup<i
+						class="fa fa-angle-right"></i>
+				</a>
+				<a class="btn btn-xs btn-primary" ng-show="editSelectedWord"
+					ng-click="editSelectedWord=false;pageFormData.templateEditWordData = pageFormData.pagedData.selectedWordDataItem">Edit<i
+						class="fa fa-angle-right"></i>
+				</a>
+				<a class="btn btn-xs btn-danger" ng-show="!editSelectedWord" ng-click="editSelectedWord=true;">Cancel
+					Edit<i class="fa fa-angle-right"></i>
+				</a>
+				<a ng-show="!editSelectedWord" class="btn btn-xs btn-primary"
+					ng-click="updateWordObj(pageFormData.templateEditWordData)">
+					Update
+					<i class="fa fa-angle-right"></i>
+				</a>
+
+				<a class="btn btn-xs btn-primary" ng-click="saveWordReads()"
+					ng-show="!isAlreadyReadToday && editSelectedWord">Mark
+					as Read today <i class="fa fa-angle-right"></i>
+				</a> <br />
+
+				<p>
+					<small class="text-muted">
+						<i class="fa fa-clock-o"></i> Last Read on <b> <span
+								ng-bind="pageFormData.pagedData.selectedWordDataItem.wordReads.word.last_read | date:'MMM/dd/yyyy hh:mm:ss a'">
+							</span> |
+						</b>
+					</small>
+
+					<small class="text-muted">
+						<i class="fa fa-clock-o"></i> Last Modified on <b> <span
+								ng-bind="pageFormData.pagedData.selectedWordDataItem.updated_on | date:'MMM/dd/yyyy hh:mm:ss a'">
+							</span> |
+						</b>
+					</small>
+
+					<small class="text-muted">
+						<i class="fa fa-clock-o"></i> Created on <b> <span
+								ng-bind="pageFormData.pagedData.selectedWordDataItem.created_on | date:'MMM/dd/yyyy hh:mm:ss a'"></span>
+						</b>
+					</small> <br>
+
+					<span class="badge">Total Reads :-
+						{{pageFormData.pagedData.selectedWordDataItem.wordReads.count}}</span>
+				</p>
+
+				<b>Word :</b>
+				<span ng-show="editSelectedWord" ng-bind-html="pageFormData.pagedData.selectedWordDataItem.word"></span>
+
+				<input ng-show="!editSelectedWord" type="text" ng-model="pageFormData.templateEditWordData.word" />
+				<br />
+
+
+
+
+
+				<div class="card-subtitle mb-2 text-muted">
+					<small class="text-muted">
+						<b>Unique Name :</b>
+						<span ng-show="editSelectedWord"
+							ng-bind-html="pageFormData.pagedData.selectedWordDataItem.unique_name">
+						</span>
+						<input ng-show="!editSelectedWord" type="text"
+							ng-model="pageFormData.templateEditWordData.unique_name" />
+					</small>
+				</div>
+
+				<div class="card-subtitle mb-2 text-muted">
+					<small class="text-muted">
+						<b>Type :</b> <span ng-show="editSelectedWord"
+							ng-bind-html="pageFormData.pagedData.selectedWordDataItem.type"></span>
+						<select ng-show="!editSelectedWord" ng-model="pageFormData.templateEditWordData.type">
+							<option value="">--Select --</option>
+							<option ng-repeat="sel in settings.wordTypes"
+								ng-selected="pageFormData.templateEditWordData.type == sel" value="{{sel}}">{{sel}}
+							</option>
+						</select>
+					</small>
+				</div>
+			</div>
+
+			<div class="card-body">
+				<b>Details :</b>
+				<blockquote ng-show="editSelectedWord" class="card-text" style="font-size: smaller;">
+					<span ng-bind-html="pageFormData.pagedData.selectedWordDataItem.details"></span>
+				</blockquote>
+				<div ng-show="!editSelectedWord">
+					<trix-editor angular-trix ng-model="pageFormData.templateEditWordData.details"></trix-editor>
+				</div>
+			</div>
+
+			<div class="card-footer bg-transparent border-success">
+				<a ng-show="!editSelectedWord" class="btn btn-xs btn-danger" ng-click="editSelectedWord=true;">Cancel
+					Edit<i class="fa fa-angle-right"></i>
+				</a>
+				<a ng-show="!editSelectedWord" class="btn btn-xs btn-primary"
+					ng-click="updateWordObj(pageFormData.templateEditWordData)">
+					Update
+					<i class="fa fa-angle-right"></i>
+				</a><br />
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<div class="row" ng-show="!editSelectedWord" ng-init="showTemporaryEditBox=false;">
+		<div class="well col-lg-12">
+			<a ng-show="!showTemporaryEditBox" class="btn btn-xs btn-primary" ng-click="showTemporaryEditBox=true;">
+				Show Temporary Edit box<i class="fa fa-angle-right"></i>
+			</a>
+			<a ng-show="showTemporaryEditBox" class="btn btn-xs btn-danger" ng-click="showTemporaryEditBox=false;">
+				Hide Temporary Edit box<i class="fa fa-angle-right"></i>
+			</a>
+
+			<div ng-show="showTemporaryEditBox">
+				<trix-editor angular-trix ng-model="pageFormData.temporaryEditBoxData"></trix-editor>
+			</div>
+
+			<a ng-show="showTemporaryEditBox" class="btn btn-xs btn-danger" ng-click="showTemporaryEditBox=false;">
+				Hide Temporary Edit box<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="row" ng-show="settings.showAddNewWordSection">
+		<div class="well col-lg-12">
+
+			<div ng-style="stylesData.templateParentDescriptionStyle"
+				ng-include="'templates/word-mgmt/addWordData_item_renderer.html'">
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-show="settings.showEditWordSection">
+		<div class="well col-lg-12">
+
+			<div ng-style="stylesData.templateParentDescriptionStyle"
+				ng-include="'templates/word-mgmt/editWordData_item_renderer.html'">
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
