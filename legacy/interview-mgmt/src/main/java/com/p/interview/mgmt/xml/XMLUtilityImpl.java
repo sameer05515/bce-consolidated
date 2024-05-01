@@ -151,13 +151,13 @@
 //
 //					ticketListElement.appendChild(newTicket);
 //					rootNode.appendChild(ticketListElement);
-//					
+//
 //				}
 //			}
 //		}
 //		// //////////////
 //
-//		
+//
 //
 //		// --- add ticket history ----
 //		saveTicketHistory(ticketID, description, statusId, false);
