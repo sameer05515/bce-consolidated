@@ -1,0 +1,48 @@
+<div>
+	<b>Unique Name :</b> 
+</div>
+<div >
+	<input type="text" ng-model="pageFormData.templateAddWordData.unique_name"/>
+</div>
+
+
+
+<div>
+	<b>Word :</b> 
+</div>
+<div >
+	<input type="text" ng-model="pageFormData.templateAddWordData.word"/>
+</div>		
+
+
+
+<div >
+	<b>Type :</b> 
+</div>
+<div >
+	<!-- <input type="text" ng-model="pageFormData.templateAddWordData.type"/> -->
+	<select ng-model="pageFormData.templateAddWordData.type">
+        <option value="">--Select --</option>
+        <option ng-repeat="sel in settings.wordTypes" ng-selected="pageFormData.templateAddWordData.type == sel" value="{{sel}}">{{sel}}</option>
+    </select>
+</div>	
+
+<div>
+	<b>Description :</b>
+</div>
+<div >
+	<trix-editor angular-trix ng-model="pageFormData.templateAddWordData.details"></trix-editor> 
+</div>
+
+<div>
+	<a class="btn btn-xs btn-primary" ng-click="saveWordObj()">Save
+		<i class="fa fa-angle-right"></i>
+	</a>
+
+	<a class="btn btn-xs btn-primary" ng-click="settings.showAddNewWordSection=false;">Cancel
+		<i class="fa fa-angle-right"></i>
+	</a>
+	
+</div>
+		
+		

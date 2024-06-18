@@ -1,0 +1,131 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Answer <small>: {{topic.title}}</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#/categories-list">HOME/CATEGORIES > </a></li>
+
+				<li><a href="#/categories/{{topic.linkedCatID}}">CURRENT
+						CATEGORY > </a></li>
+
+				<li><a
+					href="#/categories/{{topic.linkedCatID}}/questions/{{topic.linkedQuesID}}">QUESTIONS/CURRENT
+						QUESTION > </a></li>
+
+
+				<li class="active">ANSWERS/CURRENT ANSWER ></li>
+
+			</ol>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="well col-lg-8">
+			<hr>
+			<!-- <h2> -->
+			Answer : <span star-rating rating-value="topic.rating"
+				edit-star-rating="false" max="maxRatingValue"></span> <span
+				ng-bind-html="topic.answer"></span>
+			<!-- </h2> -->
+
+			<div ng-show="!showEditAnswerSection">
+				<a class="btn btn-xs btn-primary" ng-click="showEditAnswer()"
+					ng-if="true">Edit</a> <a class="btn btn-xs btn-primary"
+					ng-click="alert('not implemented yet')" ng-if="true">Delete</a>
+			</div>
+
+
+			<div ng-show="showEditAnswerSection">
+				<trix-editor angular-trix ng-model="updateAnswerObj.answer"
+					ng-show="showEditAnswerSection"></trix-editor>
+				<div star-rating rating-value="updateAnswerObj.rating"
+					edit-star-rating="true" max="maxRatingValue"
+					on-rating-selected="getSelectedRating(rating)"></div>
+				<a class="btn btn-xs btn-primary" ng-click="editAnswer()"
+					ng-if="showEditAnswerSection">Save</a> <a
+					class="btn btn-xs btn-primary" ng-click="hideEditQuestion()"
+					ng-if="showEditAnswerSection">Cancel</a>
+			</div>
+			<hr>
+		</div>
+		<!--End Column col-lg-8-->
+
+		<div class="col-lg-4">
+
+			<div class="well">
+				<h4>Brief description for topic</h4>
+				<p>One brief description of all topics should come here.</p>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<p>
+					<i class="fa fa-clock-o"></i> Last Modified on <b><span
+						ng-bind="topic.dateLastModified | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+				</p>
+				<p>
+					<i class="fa fa-clock-o"></i> Created on <b><span
+						ng-bind="topic.dateCreated | date:'MMM/dd/yyyy hh:mm:ss a'"></span></b>
+				</p>
+				<a class="btn btn-xs btn-primary" href="#/topics/{{topic.id}}">Modify
+					<i class="fa fa-angle-right"></i>
+				</a> <a class="btn btn-xs btn-primary" href="#/topics-list">Back to
+					list <i class="fa fa-angle-right"></i>
+				</a>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<h4>
+					Related Groups
+					<!-- <button class="lalChaukor">+</button> -->
+					<a class="btn btn-xs btn-primary" ng-click="fetchGroupList()"><i
+						class="fa fa-plus">Add</i></a>
+				</h4>
+
+				<div
+					ng-repeat="group in (filteredGroupItems=(groupsList| filter:filterAlreadyAddedGroup))">
+					<input type='checkbox' value="{{group}}"
+						check-list="checked_groups"> {{group.title}}
+					&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				<a class="btn btn-xs btn-primary"
+					ng-click="saveTopicGroupRelationList()"
+					ng-if="filteredGroupItems.length>0">Save</a> <a
+					class="btn btn-xs btn-primary"
+					ng-click="resetGroupsAndShowTopicGroupRelations()"
+					ng-if="filteredGroupItems.length>0">Cancel</a>
+				<!-- {{checked_groups}} -->
+
+				<div ng-repeat="topicGroupsRelation in topicGroupsRelationList">
+					<a href="#/groups-list/{{topicGroupsRelation.groups.id}}">{{topicGroupsRelation.groups.title}}</a>
+					<a class="btn btn-xs btn-primary" href="#">Remove<i
+						class="fa fa-minus"></i></a>
+				</div>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<!-- Related Views lists comes from all Views which are part of groups to which current Topic is associated with. -->
+				<h4>Related Views</h4>
+				<br /> <a href="">view 1</a> <br /> <a href="">view 2</a>
+			</div>
+			<!-- /well -->
+
+			<div class="well">
+				<!-- Related Topics lists comes from all Topics which are part of groups to which current Topic is associated with. -->
+				<h4>Related Topics</h4>
+				<br /> <a href="">topic 1</a> <br /> <a href="">topic 2</a>
+			</div>
+			<!-- /well -->
+
+		</div>
+		<!--End Column col-lg-4-->
+	</div>
+	<!--End Row-->
+
+</div>

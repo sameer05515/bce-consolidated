@@ -1,0 +1,135 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<i class="fa fa-file-text fa-4x"></i>
+			<h1 class="page-header">
+				Execute Query <small>: Dynamically</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="">Execute Query</a></li>
+				<li class="active">Dynamically</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+
+
+		<!-- ##################################### -->
+
+		<form role="col-lg-12 form">
+			<div class="form-group">
+				<label for="name">DB Unique Name :</label> <input type="text"
+					class="form-control" placeholder="DB Unique Name"
+					ng-model="dynamicQueryRequestObject.dataSourcePojo.dbUniqueName" />
+			</div>
+			<div class="form-group">
+				<label for="name">User Name :</label> <input type="text"
+					class="form-control" placeholder="User Name"
+					ng-model="dynamicQueryRequestObject.dataSourcePojo.userName" />
+			</div>
+			<div class="form-group">
+				<label for="name">Password :</label> <input type="text"
+					class="form-control" placeholder="Password"
+					ng-model="dynamicQueryRequestObject.dataSourcePojo.password" />
+			</div>
+			<div class="form-group">
+				<label for="name">URL :</label> <input type="text"
+					class="form-control" placeholder="URL"
+					ng-model="dynamicQueryRequestObject.dataSourcePojo.url" />
+			</div>
+			<div class="form-group">
+				<label for="name">Driver Class Name :</label> <input type="text"
+					class="form-control" placeholder="Driver Class Name"
+					ng-model="dynamicQueryRequestObject.dataSourcePojo.driverClassName" />
+			</div>
+			<div class="form-group">
+				<label for="name">Enter Query :</label>
+				<textarea class="form-control" rows="3" placeholder="Enter Query"
+					ng-model="dynamicQueryRequestObject.query"></textarea>
+			</div>
+		</form>
+
+
+		<div class="col-lg-12">
+			<a class="btn btn-xs btn-primary" ng-click="saveQueryConfig()">Save
+				<i class="fa fa-angle-right"></i>
+			</a> <a class="btn btn-xs btn-primary" ng-click="executeQuery()">Execute
+				Query<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+	</div>
+
+	<!-- dynamicTableData : {{dynamicTableData}}<br> <br>
+	dynamicQueryResponse.data.data.resultMap.tableData :
+	{{dynamicQueryResponse.data.data.resultMap.tableData}} -->
+
+
+	<div class="row" ng-hide="!showDynamicTableData">
+		<div class="well col-lg-12">
+			<table id="dynamic-query-table">
+
+				<tr>
+					<th ng-repeat="(header, value) in dynamicTableData[0]">{{header}}</th>
+				</tr>
+
+
+
+				<tr ng-repeat="row in dynamicTableData">
+					<!-- <td ng-repeat="cell in row">{{cell}}</td> -->
+					<td ng-repeat="cell in row">
+						<span ng-bind-html="cell"></span>
+					</td>
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+
+	showDynamicResponseError: {{showDynamicResponseError}}<br>
+	showDynamicTableData and !dynamicQueryResponse.isError and !showDynamicResponseError :
+	{{showDynamicTableData && !dynamicQueryResponse.isError && !showDynamicResponseError}}
+
+	<div class="row"
+		ng-hide="!dynamicQueryResponse.isError && !showDynamicResponseError">
+		<div class="well col-lg-12">
+			<form role="col-lg-12 form">
+				<div class="form-group">
+					<label for="name">Is Error :</label> <p>{{dynamicQueryResponse.isError}}</p>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="name">Status :</label> <p>{{dynamicQueryResponse.data.status}} </p>
+				</div>
+				<div class="form-group">
+					<label for="name">Data Message :</label> <p>{{dynamicQueryResponse.data.message}} </p>
+						
+				</div>
+				
+				
+				
+				
+				
+				<div class="form-group">
+					<label for="name">Response Message :</label> <p>{{dynamicQueryResponse.message}} </p>
+						
+				</div>
+				<div class="form-group">
+					<label for="name">Timestamp :</label> <p>{{dynamicQueryResponse.timestamp}} </p>
+						
+				</div>
+				<div class="form-group">
+					<label for="name">Response Status :</label> <p>{{dynamicQueryResponse.status}} </p>
+						
+				</div>
+				
+				
+			</form>
+		</div>
+	</div>
+
+
+</div>
